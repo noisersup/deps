@@ -1,2 +1,3 @@
 # deps
-FerretDB's dependencies for development
+
+FerretDB's development dependencies in Docker containers.

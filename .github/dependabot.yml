@@ -1,0 +1,27 @@
+---
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    labels: [deps]
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "01:42"
+
+  - package-ecosystem: "docker"
+    directory: "/docusaurus-docs"
+    labels: [deps]
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "01:42"
+  - package-ecosystem: "npm"
+    directory: "/docusaurus-docs"
+    labels: [deps]
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "01:42"
+    allow:
+      - dependency-name: "@docusaurus/*"
