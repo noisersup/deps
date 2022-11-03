@@ -1,0 +1,12 @@
+{
+  "name": "ferretdb-textlint",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "textlint": "12.2.2",
+    "textlint-rule-one-sentence-per-line": "2.0.0"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
