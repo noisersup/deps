@@ -6,7 +6,7 @@ updates:
     labels: [deps]
     schedule:
       interval: "weekly"
-      day: "thursday"
+      day: "tuesday"
       time: "01:42"
 
   - package-ecosystem: "docker"
@@ -14,14 +14,14 @@ updates:
     labels: [deps]
     schedule:
       interval: "weekly"
-      day: "thursday"
+      day: "tuesday"
       time: "01:42"
   - package-ecosystem: "npm"
     directory: "/docusaurus-docs"
     labels: [deps]
     schedule:
       interval: "weekly"
-      day: "thursday"
+      day: "tuesday"
       time: "01:42"
     allow:
       - dependency-name: "@docusaurus/*"
@@ -31,12 +31,12 @@ updates:
     labels: [deps]
     schedule:
       interval: "weekly"
-      day: "thursday"
+      day: "tuesday"
       time: "01:42"
   - package-ecosystem: "npm"
     directory: "/ferretdb-textlint"
     labels: [deps]
     schedule:
       interval: "weekly"
-      day: "thursday"
+      day: "tuesday"
       time: "01:42"
