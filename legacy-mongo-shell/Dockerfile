@@ -1,5 +1,5 @@
 # sync tag with git clone's argument below
-FROM mongo:6.0.3
+FROM mongo:6.0.3 AS build
 
 RUN apt update
 RUN apt install -y \
@@ -21,8 +21,12 @@ RUN python3 -m pip install -r etc/pip/compile-requirements.txt
 # or add `-j1` parameter to build sequentially.
 RUN python3 buildscripts/scons.py install-mongo
 
-RUN mv build/install/bin/mongo /usr/bin
 
+FROM mongo:6.0.3
+
+COPY --from=build /mongo/build/install/bin/mongo /usr/bin
+
+WORKDIR /
 CMD mongo
 
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md
