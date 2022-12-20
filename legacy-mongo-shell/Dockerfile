@@ -27,8 +27,8 @@ FROM mongo:6.0.3
 COPY --from=build /mongo/build/install/bin/mongo /usr/bin
 
 WORKDIR /
-CMD mongo
-ENTRYPOINT []
+CMD []
+ENTRYPOINT ["mongo"]
 
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md
 LABEL org.opencontainers.image.source="https://github.com/FerretDB/deps"
