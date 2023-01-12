@@ -25,6 +25,7 @@ RUN python3 buildscripts/scons.py install-mongo
 FROM mongo:6.0.3
 
 COPY --from=build /mongo/build/install/bin/mongo /usr/bin
+RUN ln -sv /usr/bin/mongo /mongo
 
 WORKDIR /
 CMD []
