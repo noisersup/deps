@@ -1,7 +1,8 @@
 FROM node:18.13.0-alpine3.16
 
 # for wrangler to be able to pick up branch name, commit hash, etc.
-RUN apk --no-cache add git
+RUN apk --no-cache add git git-lfs
+RUN git lfs install
 
 WORKDIR /deps
 COPY *.json .
