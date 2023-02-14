@@ -1,6 +1,7 @@
 update:
 	rm -fr node_modules package-lock.json
 	/opt/homebrew/opt/node@18/bin/node /opt/homebrew/opt/node@18/bin/npm install --save --save-exact
+	rm -fr node_modules
 
 build-init:
 	docker buildx create --driver=docker-container --name=ferretdb
