@@ -1,4 +1,4 @@
-FROM golang:1.20.1
+FROM golang:1.20.2
 
 RUN go install -v std
 RUN go install -v -trimpath std
