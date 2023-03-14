@@ -1,14 +1,23 @@
+# syntax=docker/dockerfile:1
+
 FROM golang:1.20.2
 
-RUN env CGO_ENABLED=0 go install -v std
-RUN env CGO_ENABLED=0 go install -v -trimpath std
+RUN <<EOF
+set -ex
 
-RUN env CGO_ENABLED=1 go install -v std
-RUN env CGO_ENABLED=1 go install -v -trimpath std
+env CGO_ENABLED=0 go install -v std
+env CGO_ENABLED=0 go install -v -trimpath std
+
+env CGO_ENABLED=1 go install -v std
+env CGO_ENABLED=1 go install -v -trimpath std
 
 # ignore "-race is not supported on linux/arm"
-RUN env CGO_ENABLED=1 go install -v -race std; exit 0
-RUN env CGO_ENABLED=1 go install -v -trimpath -race std; exit 0
+env CGO_ENABLED=1 go install -v -race std || exit 0
+env CGO_ENABLED=1 go install -v -trimpath -race std || exit 0
+
+apt update
+apt install -y rsync
+EOF
 
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md
 LABEL org.opencontainers.image.source="https://github.com/FerretDB/deps"
