@@ -12,8 +12,8 @@ env CGO_ENABLED=1 go install -v std
 env CGO_ENABLED=1 go install -v -trimpath std
 
 # ignore "-race is not supported on linux/arm"
-env CGO_ENABLED=1 go install -v -race std || exit 0
-env CGO_ENABLED=1 go install -v -trimpath -race std || exit 0
+env CGO_ENABLED=1 go install -v -race std || true
+env CGO_ENABLED=1 go install -v -trimpath -race std || true
 
 apt update
 apt install -y rsync
