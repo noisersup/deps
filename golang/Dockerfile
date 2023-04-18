@@ -5,6 +5,10 @@ FROM golang:1.20.3
 RUN <<EOF
 set -ex
 
+# ingore "unsupported GOOS/GOARCH pair" for arm/v7
+env GOOS=windows go install -v std || true
+env GOOS=darwin  go install -v std || true
+
 env CGO_ENABLED=0 go install -v std
 
 env CGO_ENABLED=1 go install -v std
