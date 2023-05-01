@@ -27,6 +27,21 @@ updates:
       - dependency-name: "@docusaurus/*"
 
   - package-ecosystem: "docker"
+    directory: "/ferretdb-prettier"
+    labels: [deps]
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "01:42"
+  - package-ecosystem: "npm"
+    directory: "/ferretdb-prettier"
+    labels: [deps]
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "01:42"
+
+  - package-ecosystem: "docker"
     directory: "/ferretdb-textlint"
     labels: [deps]
     schedule:

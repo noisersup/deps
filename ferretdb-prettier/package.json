@@ -1,0 +1,11 @@
+{
+  "name": "ferretdb-prettier",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "prettier": "2.8.8"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
