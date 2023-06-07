@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.20.4
+FROM golang:1.20.5
 
 RUN <<EOF
 set -ex
@@ -10,7 +10,6 @@ env GOOS=windows go install -v std || true
 env GOOS=darwin  go install -v std || true
 
 env CGO_ENABLED=0 go install -v std
-
 env CGO_ENABLED=1 go install -v std
 
 # ignore "-race is not supported on linux/arm"
