@@ -1,5 +1,5 @@
 # sync tag with git clone's argument below
-FROM mongo:6.0.8 AS build
+FROM mongo:6.0.9 AS build
 
 RUN apt update
 RUN apt install -y \
@@ -12,7 +12,7 @@ RUN apt install -y \
 WORKDIR /mongo
 
 # sync tag with image tag above
-RUN git clone -b r6.0.8 --depth 1 --progress https://github.com/mongodb/mongo.git .
+RUN git clone -b r6.0.9 --depth 1 --progress https://github.com/mongodb/mongo.git .
 
 RUN python3 -m pip install -r etc/pip/compile-requirements.txt
 
@@ -22,7 +22,7 @@ RUN python3 -m pip install -r etc/pip/compile-requirements.txt
 RUN python3 buildscripts/scons.py install-mongo
 
 
-FROM mongo:6.0.8
+FROM mongo:6.0.9
 
 COPY --from=build /mongo/build/install/bin/mongo /usr/bin
 RUN ln -sv /usr/bin/mongo /mongo
