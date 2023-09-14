@@ -3,7 +3,7 @@ FROM golang:1.21.1
 RUN <<EOF
 set -ex
 
-# ingore "unsupported GOOS/GOARCH pair" for arm/v7
+# ingore "unsupported GOOS/GOARCH pair" for arm/v6 and arm/v7
 env GOOS=windows go install -v std || true
 env GOOS=darwin  go install -v std || true
 

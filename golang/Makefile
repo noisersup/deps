@@ -11,6 +11,6 @@ build-local:
 build-push:
 	test -n $(DOCKER_TAG)
 	docker buildx build --builder=ferretdb \
-		--platform=linux/arm/v7,linux/arm64,linux/amd64 \
+		--platform=linux/arm/v6,linux/arm/v7,linux/arm64,linux/amd64 \
 		--tag=ghcr.io/ferretdb/golang:$(DOCKER_TAG) \
 		--push .
