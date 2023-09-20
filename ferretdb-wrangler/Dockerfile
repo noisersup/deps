@@ -1,4 +1,4 @@
-FROM node:18.16.0-alpine3.16
+FROM node:20.6.1-alpine3.17
 
 # for wrangler to be able to pick up branch name, commit hash, etc.
 RUN apk --no-cache add git git-lfs
