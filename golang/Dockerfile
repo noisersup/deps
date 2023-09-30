@@ -3,18 +3,21 @@ FROM golang:1.21.1
 RUN <<EOF
 set -ex
 
-# ingore "unsupported GOOS/GOARCH pair" for arm/v6 and arm/v7
-env GOOS=windows go install -v std || true
-env GOOS=darwin  go install -v std || true
+apt update
+apt install -y rsync time
 
-env CGO_ENABLED=0 go install -v std
-env CGO_ENABLED=1 go install -v std
+go env
+
+# ingore "unsupported GOOS/GOARCH pair" for arm/v6 and arm/v7
+time env GOOS=windows go install -v std || true
+time env GOOS=darwin  go install -v std || true
+
+time env CGO_ENABLED=0 go install -v std
+time env CGO_ENABLED=1 go install -v std
 
 # ignore "-race is not supported on linux/arm"
-env CGO_ENABLED=1 go install -v -race std || true
+time env CGO_ENABLED=1 go install -v -race std || true
 
-apt update
-apt install -y rsync
 EOF
 
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md
