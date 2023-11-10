@@ -1,12 +1,15 @@
 FROM golang:1.21.4
 
+ARG TARGETVARIANT
+
 RUN <<EOF
 set -ex
 
 apt update
 apt install -y rsync time
 
-go env
+# https://github.com/docker-library/golang/issues/494
+export GOARM=${TARGETVARIANT#v}
 
 # ingore "unsupported GOOS/GOARCH pair" for arm/v6 and arm/v7
 time env GOOS=windows go install -v std || true
