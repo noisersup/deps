@@ -72,14 +72,6 @@ updates:
       time: "01:42"
 
   - package-ecosystem: "docker"
-    directory: "/golang"
-    labels: [deps]
-    schedule:
-      interval: "weekly"
-      day: "tuesday"
-      time: "01:42"
-
-  - package-ecosystem: "docker"
     directory: "/legacy-mongo-shell"
     labels: [deps]
     schedule:
