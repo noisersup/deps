@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "wrangler": "3.28.3"
+    "wrangler": "3.53.0"
   },
   "engines": {
     "node": "20.x"
