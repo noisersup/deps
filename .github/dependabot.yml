@@ -10,12 +10,18 @@ updates:
       time: "01:42"
 
   - package-ecosystem: "docker"
-    directory: "/docusaurus-docs"
+    directories:
+      - "/docusaurus-docs"
+      - "/ferretdb-prettier"
+      - "/ferretdb-textlint"
+      - "/ferretdb-wrangler"
+      - "/legacy-mongo-shell"
     labels: [deps]
     schedule:
       interval: "weekly"
       day: "tuesday"
       time: "01:42"
+
   - package-ecosystem: "npm"
     directory: "/docusaurus-docs"
     labels: [deps]
@@ -26,53 +32,11 @@ updates:
     allow:
       - dependency-name: "@docusaurus/*"
 
-  - package-ecosystem: "docker"
-    directory: "/ferretdb-prettier"
-    labels: [deps]
-    schedule:
-      interval: "weekly"
-      day: "tuesday"
-      time: "01:42"
   - package-ecosystem: "npm"
-    directory: "/ferretdb-prettier"
-    labels: [deps]
-    schedule:
-      interval: "weekly"
-      day: "tuesday"
-      time: "01:42"
-
-  - package-ecosystem: "docker"
-    directory: "/ferretdb-textlint"
-    labels: [deps]
-    schedule:
-      interval: "weekly"
-      day: "tuesday"
-      time: "01:42"
-  - package-ecosystem: "npm"
-    directory: "/ferretdb-textlint"
-    labels: [deps]
-    schedule:
-      interval: "weekly"
-      day: "tuesday"
-      time: "01:42"
-
-  - package-ecosystem: "docker"
-    directory: "/ferretdb-wrangler"
-    labels: [deps]
-    schedule:
-      interval: "weekly"
-      day: "tuesday"
-      time: "01:42"
-  - package-ecosystem: "npm"
-    directory: "/ferretdb-wrangler"
-    labels: [deps]
-    schedule:
-      interval: "weekly"
-      day: "tuesday"
-      time: "01:42"
-
-  - package-ecosystem: "docker"
-    directory: "/legacy-mongo-shell"
+    directories:
+      - "/ferretdb-prettier"
+      - "/ferretdb-textlint"
+      - "/ferretdb-wrangler"
     labels: [deps]
     schedule:
       interval: "weekly"
