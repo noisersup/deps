@@ -13,7 +13,7 @@ if [ $( find /var/inputs/ -maxdepth 1 -type f -name *.gpg| wc -l ) != 0  ]; then
 		exit 1
 	fi
 else
-	echo "/var/inputs/*.gpg must be provided. Please use task gen-key."
+	echo "At least a single /var/inputs/*.gpg file must be provided."
 	exit 1
 fi
 
