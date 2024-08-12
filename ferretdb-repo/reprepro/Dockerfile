@@ -1,0 +1,17 @@
+FROM debian:experimental-20240722
+
+ENV REPREPRO_BASE_DIR=/srv/repos/apt/debian
+
+RUN mkdir -p /tmp/repos/apt/debian
+COPY config/apt /tmp/repos/apt/debian/conf
+
+COPY run.sh /docker-entrypoint.sh
+COPY gen-key.sh /
+
+RUN apt-get update && \
+  apt-get install -yq ssh \
+  apt-get -t experimental install -yq reprepro
+
+EXPOSE 22
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD [ "tail", "-f", "/dev/null" ]
