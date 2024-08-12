@@ -5,8 +5,7 @@ ENV REPREPRO_BASE_DIR=/srv/repos/apt/debian
 RUN mkdir -p /tmp/repos/apt/debian
 COPY apt /tmp/repos/apt/debian/conf
 
-COPY run.sh /docker-entrypoint.sh
-COPY gen-key.sh /
+COPY docker-entrypoint.sh /
 
 RUN apt-get update && \
   apt-get install -yq ssh \
