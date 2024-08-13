@@ -8,7 +8,7 @@ COPY apt /tmp/repos/apt/debian/conf
 COPY docker-entrypoint.sh /
 
 RUN apt-get update && \
-  apt-get install -yq ssh \
+  apt-get install -yq ssh && \
   apt-get -t experimental install -yq reprepro
 
 EXPOSE 22

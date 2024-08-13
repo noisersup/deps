@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
+rm -rf /srv/repos
 cp -r /tmp/repos /srv/
 
 # TODO ssh gpg socket setup
@@ -9,14 +10,14 @@ cp -r /tmp/repos /srv/
 # TODO
 # should we take deb packages as inputs in mounted dir and pull them every time container is created, or should the /srv/repos be its own mount?
 
-if [ $( find /var/inputs/ -maxdepth 1 -type f -name *.gpg| wc -l ) != 0  ]; then
-	gpg --allow-secret-key-import --import /var/inputs/*.gpg
+if [ $( find /var/inputs/keys -maxdepth 1 -type f -name *.gpg| wc -l ) != 0  ]; then
+	gpg --allow-secret-key-import --import /var/inputs/keys/*.gpg
     if [ $? -ne 0 ]; then
 		echo "Failed to import the key."
 		exit 1
 	fi
 else
-	echo "At least a single /var/inputs/*.gpg file must be provided."
+	echo "At least a single /var/inputs/keys/*.gpg file must be provided."
 	exit 1
 fi
 
@@ -31,5 +32,14 @@ mkdir -p /srv/repos/apt/static/
 for name in $names; do
 	gpg --armor --output /srv/repos/apt/static/$name.gpg.key --export-options export-minimal --export $name
 done
+
+# TODO get distribution name from distributions file
+reprepro includedeb bookworm /var/inputs/pkgs/*/*.deb
+
+if [ $? -ne 0 ]; then
+	echo "Failed to import the package"
+	exit 1
+fi
+
 
 exec "$@"
