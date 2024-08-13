@@ -7,9 +7,6 @@ cp -r /tmp/repos /srv/
 # TODO ssh gpg socket setup
 #echo "remote gpg socket: $( gpgconf --list-dir agent-socket )"
 
-# TODO
-# should we take deb packages as inputs in mounted dir and pull them every time container is created, or should the /srv/repos be its own mount?
-
 if [ $( find /var/inputs/keys -maxdepth 1 -type f -name *.gpg| wc -l ) != 0  ]; then
 	gpg --allow-secret-key-import --import /var/inputs/keys/*.gpg
     if [ $? -ne 0 ]; then
