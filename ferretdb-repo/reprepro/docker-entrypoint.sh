@@ -23,7 +23,6 @@ echo "SignWith: $( echo $fingerprints | paste -sd' ' -)" >> /srv/repos/apt/debia
 
 names=$(gpg --list-keys | sed -n 's/uid\s*\[[a-zA-Z ]*\] \([a-zA-Z_-]*\)$/\1/p')
 
-rm -rf /srv/repos/apt/static/
 mkdir -p /srv/repos/apt/static/
 
 for name in $names; do
