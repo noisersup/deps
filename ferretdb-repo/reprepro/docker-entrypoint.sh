@@ -35,9 +35,8 @@ done
 
 # TODO get distribution name from distributions file
 reprepro includedeb bookworm /var/inputs/pkgs/*/*.deb
-
 if [ $? -ne 0 ]; then
-	echo "Failed to import the package"
+	echo "Failed to import packages"
 	exit 1
 fi
 
