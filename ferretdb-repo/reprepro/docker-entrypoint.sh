@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
-rm -rf /srv/repos
+rm -rf /srv/repos/*
 cp -r /tmp/repos /srv/
 
-# TODO ssh gpg socket setup
-#echo "remote gpg socket: $( gpgconf --list-dir agent-socket )"
-
-if [ $( find /var/inputs/keys -maxdepth 1 -type f -name *.gpg| wc -l ) != 0  ]; then
+if [ $( find /var/inputs/keys -maxdepth 1 -type f -name *.gpg | wc -l ) != 0  ]; then
 	gpg --allow-secret-key-import --import /var/inputs/keys/*.gpg
     if [ $? -ne 0 ]; then
 		echo "Failed to import the key."
@@ -19,7 +16,7 @@ else
 fi
 
 fingerprints=$( gpg --list-secret-key | grep -oP '(?<=\s)[A-F0-9]{40}$' )
-echo "SignWith: $( echo $fingerprints | paste -sd' ' -)" >> /srv/repos/apt/debian/conf/distributions
+echo "SignWith: $(echo $fingerprints | paste -sd' ' -)" >> /srv/repos/apt/debian/conf/distributions
 
 names=$(gpg --list-keys | sed -n 's/uid\s*\[[a-zA-Z ]*\] \([a-zA-Z_-]*\)$/\1/p')
 
