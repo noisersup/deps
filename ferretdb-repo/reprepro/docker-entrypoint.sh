@@ -20,14 +20,16 @@ echo "SignWith: $(echo $fingerprints | paste -sd' ' -)" >> /srv/repos/apt/debian
 
 names=$(gpg --list-keys | sed -n 's/uid\s*\[[a-zA-Z ]*\] \([a-zA-Z_-]*\)$/\1/p')
 
+
 mkdir -p /srv/repos/apt/static/
 
 for name in $names; do
 	gpg --armor --output /srv/repos/apt/static/$name.gpg.key --export-options export-minimal --export $name
 done
 
-# TODO get distribution name from distributions file
-reprepro includedeb bookworm /var/inputs/pkgs/*/*.deb
+dist=$(sed -n 's/Codename:\s*//p')
+
+reprepro includedeb $dist /var/inputs/pkgs/*/*.deb
 if [ $? -ne 0 ]; then
 	echo "Failed to import packages"
 	exit 1
