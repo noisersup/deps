@@ -12,5 +12,4 @@ RUN apt-get update && \
   apt-get -t experimental install -yq reprepro
 
 EXPOSE 22
-ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD [ "tail", "-f", "/dev/null" ]
