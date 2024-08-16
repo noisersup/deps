@@ -4,7 +4,6 @@ ENV REPREPRO_BASE_DIR=/srv/repos/apt/debian
 
 RUN mkdir -p /var/inputs
 
-
 RUN mkdir -p /tmp/repos/apt/debian
 COPY apt /tmp/repos/apt/debian/conf
 
