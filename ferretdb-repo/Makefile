@@ -3,8 +3,5 @@ build-init:
 
 build-local:
 	docker buildx build --builder=ferretdb-deps \
-		--tag=ferretdb-repo \
-		--load . && \
-	docker buildx build --builder=ferretdb-deps \
 		--tag=ferretdb-reprepro \
-		--load ./reprepro
+		--load . && \
