@@ -13,6 +13,7 @@ updates:
     directories:
       - "/docusaurus-docs"
       - "/ferretdb-prettier"
+      - "/ferretdb-reprepro"
       - "/ferretdb-textlint"
       - "/ferretdb-wrangler"
       - "/legacy-mongo-shell"
