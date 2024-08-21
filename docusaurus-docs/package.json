@@ -14,6 +14,7 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
+    "cheerio": "1.0.0-rc.12",
     "@cmfcmf/docusaurus-search-local": "^1.2.0",
     "@docusaurus/core": "^3.5.2",
     "@docusaurus/preset-classic": "^3.5.2",
