@@ -1,7 +1,0 @@
-Origin: FerretDB
-Label: FerretDB
-Codename: bookworm
-Architectures: armhf arm64 amd64
-Components: main
-Description: Apt repository for FerretDB
-Limit: 0

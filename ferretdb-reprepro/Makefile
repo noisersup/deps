@@ -7,7 +7,6 @@ build-local:
 		--load .
 
 build-push:
-	rm -fr node_modules
 	test -n $(DOCKER_TAG)
 	docker buildx build --builder=ferretdb-deps \
 		--platform=linux/arm64,linux/amd64 \
